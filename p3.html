@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Custom Opening Screen</title>
+  <style>
+.image{
+  background-color: rgba(100,201,154);
+  margin : 100px 0 0 300px;
+  border : 2px solid white;
+  width : 65%;
+  height: 600px;
+  display: inline-block;
+  background-image: url(luffy.jpg);
+  background-size: cover;
+}
+.splash{
+  cursor : pointer;
+  position : fixed;
+  top : 50%;
+  left : 50%;
+  height : 95%;
+  width : 95%;
+  transform : translate(-50%,-50%);    
+  background-color: rgba(0,0,0);
+  transition : all ease-in-out 600ms;
+}
+.hidden{
+  transition : 0.5s;
+  display : none;
+}
+.splash-header {
+  height : 90%;
+  color : white;
+  font-family : consolas;
+  font-size : 30px;
+  display : flex;
+  justify-content: center;
+  align-items : center;
+}
+
+body {
+  background-color: rgba(200,200,170);
+}
+
+.btn {
+  z-index : -1;
+  left : 50%;
+  transform : translateX(-50%);
+}
+  </style>
+</head>
+<body>
+    <div class="image"></div>    
+
+      <!-- Splash Screen code starts here  -->
+      <div class="splash">
+        <h1 class = "splash-header">Welcome to my Codepen!!</h1>
+      </div>
+        <!-- Splash Screen code ends here  -->
+            
+  <script>
+   var splashScreen = document.querySelector('.splash');
+splashScreen.addEventListener('click',()=>{
+  splashScreen.style.opacity = 0;
+  setTimeout(()=>{
+    splashScreen.classList.add('hidden')
+  },610)
+})
+  </script>
+
+</body>
+</html>

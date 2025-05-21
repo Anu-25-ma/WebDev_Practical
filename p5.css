@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+  }
+  
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-around;
+    background: #1f1f1f;
+    padding: 1em;
+  }
+  
+  .navbar button {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  .navbar button:hover {
+    color: #fff;
+  }
+  
+  main {
+    flex: 1;
+    padding: 1em;
+    overflow-y: auto;
+  }
+  
+  .view {
+    display: none;
+  }
+
+  .view.active {
+    display: block;
+  }
+  .player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #1f1f1f;
+    padding: 1em;
+    position: sticky;
+    bottom: 0;
+  }
+  input[type="range"] {
+    width: 100px;
+  }
+  

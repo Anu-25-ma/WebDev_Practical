@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8"> 
+  <title>Send SMS</title>
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e9f0f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .sms-form {
+      background: #fff;
+      padding: 30px;
+      width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    } 
+    
+    .sms-form h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    } 
+    
+    .sms-form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .sms-form input, .sms-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .sms-form button {
+      background-color:#166088;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .sms-form button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+
+  <form class="sms-form">
+    <h2>Send SMS</h2>
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" placeholder="+1234567890" required>
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="4" placeholder="Type your message..." required></textarea>
+
+    <button type="submit">Send SMS</button>
+  </form>
+
+</body>
+</html>

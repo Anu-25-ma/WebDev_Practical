@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Local Data Storage</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+input, button {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>📝 Save User Name</h1>
+
+  <input type="text" id="nameInput" placeholder="Enter your name" />
+  <button onclick="saveName()">Save</button>
+  <button onclick="loadName()">Load</button>
+  <button onclick="clearName()">Clear</button>
+
+  <p id="output"></p>
+
+  <script>
+    function saveName() {
+  const name = document.getElementById('nameInput').value;
+  localStorage.setItem('username', name);
+  alert('Name saved!');
+}
+
+function loadName() {
+  const storedName = localStorage.getItem('username');
+  if (storedName) {
+    document.getElementById('output').textContent = `Hello, ${storedName}!`;
+  } else {
+    document.getElementById('output').textContent = 'No name saved yet.';
+  }
+}
+
+function clearName() {
+  localStorage.removeItem('username');
+  document.getElementById('output').textContent = '';
+  alert('Name cleared!');
+}
+
+  </script>
+</body>
+</html>

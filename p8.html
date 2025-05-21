@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SQLite CRUD Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    input, button {
+      padding: 8px;
+      margin: 10px;
+    }
+    .user-list {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>SQLite CRUD Operations</h1>
+  <h2>Create User</h2>
+  <form id="createForm">
+    <input type="text" id="name" placeholder="Enter Name" required />
+    <input type="number" id="age" placeholder="Enter Age" required />
+    <button type="submit">Add User</button>
+  </form>
+
+  <h2>Users List</h2>
+  <div class="user-list" id="userList">
+    <!-- List of users will appear here -->
+  </div>
+
+  <script>
+    // Fetch users from the backend
+    function loadUsers() {
+      fetch('/users')
+        .then(response => response.json())
+        .then(data => {
+          const users = data.users;
+          const userListDiv = document.getElementById('userList');
+          userListDiv.innerHTML = ''; // Clear existing list
+
+          users.forEach(user => {
+            const userDiv = document.createElement('div');
+            userDiv.innerHTML = `
+              <p>${user.name}, Age: ${user.age} 
+              <button onclick="deleteUser(${user.id})">Delete</button></p>
+            `;
+            userListDiv.appendChild(userDiv);
+          });
+        });
+    }
+
+    // Handle adding a new user
+    document.getElementById('createForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const name = document.getElementById('name').value;
+      const age = document.getElementById('age').value;
+
+      fetch('/users', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, age })
+      })
+      .then(response => response.json())
+      .then(data => {
+        console.log('User added:', data);
+        loadUsers(); // Reload the users list
+        document.getElementById('name').value = '';
+        document.getElementById('age').value = '';
+      });
+    });
+
+    // Handle deleting a user
+    function deleteUser(id) {
+      fetch(`/users/${id}`, { method: 'DELETE' })
+        .then(response => response.json())
+        .then(data => {
+          console.log('User deleted:', data);
+          loadUsers(); // Reload the users list
+        });
+    }
+
+    // Load users on page load
+    window.onload = loadUsers;
+  </script>
+</body>
+</html>

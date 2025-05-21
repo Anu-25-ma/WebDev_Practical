@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Music Player UI</title>
+  <link rel="stylesheet" href="p5.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <nav class="navbar">
+      <button data-view="home">Home</button>
+      <button data-view="playlist">Playlist</button>
+      <button data-view="library">Library</button>
+      <button data-view="search">Search</button>
+    </nav>
+
+    <main>
+      <section id="home" class="view active">
+        <h1>Now Playing</h1>
+        <p>Track info will go here...</p>
+      </section>
+
+      <section id="playlist" class="view">
+        <h1>Your Playlist</h1>
+        <ul id="playlist-items"></ul>
+      </section>
+
+      <section id="library" class="view">
+        <h1>Your Library</h1>
+        <p>Albums, Artists, Saved Songs...</p>
+      </section>
+
+      <section id="search" class="view">
+        <h1>Search</h1>
+        <input type="text" placeholder="Search music...">
+      </section>
+    </main>
+
+    <!-- Player Controls -->
+    <footer class="player-controls">
+      <button id="prev">⏮</button>
+      <button id="play">▶️</button>
+      <button id="next">⏭</button>
+      <input type="range" id="progress" value="0" max="100">
+      <input type="range" id="volume" value="50" max="100">
+    </footer>
+  </div>
+  
+</body>
+</html>
